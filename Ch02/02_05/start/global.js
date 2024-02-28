@@ -1,19 +1,15 @@
-process.stdout.write("Hello  \n \n");
+const waitTime = 3000;
+console.log(`setting a ${waitTime / 1000} second delay`);
+const timerFinished = () => console.log("done");
 
-const questions = [
-  "What is your name?",
-  "What would you rather be doing?",
-  "What is your preferred programming language"
-];
-const answers = [];
+setTimeout(timerFinished, waitTime);
 
-function ask(i) {
-  process.stdout.write(`\n\n\n ${questions[i]}`);
-  process.stdout.write(` > `);
-}
+const waitInterval = 500;
+let currentTime = 0;
 
-process.stdin.on("data", function (data) {
-  process.stdout.write(data.toString().trim());
-});
+const incTime = () => {
+    currentTime += waitInterval;
+    console.log(`Waiting ${currentTime / 1000} seconds`);
+};
 
-ask(answers.length);
+setInterval(incTime, waitInterval);
